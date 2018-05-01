@@ -44,11 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonBatchAllNouns.cs" />
+    <Compile Include="Parsing\GrammaticalGenderParser.cs" />
+    <Compile Include="Parsing\WikiContentParser.cs" />
+    <Compile Include="Parsing\WordCasesParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WiktionaryQueryBuilder.cs" />
+    <Compile Include="WordQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CzechCases.Model\CzechCases.Model.csproj">
+      <Project>{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}</Project>
+      <Name>CzechCases.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,13 @@
-﻿namespace CzechCases.Model
+﻿using System.Diagnostics;
+
+namespace CzechCases.Model
 {
+    [DebuggerDisplay("{string.Join(\" / \",Nominativ)} {string.Join(\" / \",Genitiv)} {string.Join(\" / \",Dativ)} {string.Join(\" / \",Akuzativ)} {string.Join(\" / \",Vokativ)} {string.Join(\" / \",Lokal)} {string.Join(\" / \",Instrumental)}")]
     public class WordCases
     {
-        public WordCases(string nominativ, string genitiv, string dativ, string akuzativ, string vokativ, string lokal, string instrumental)
+        public WordCases(string[] nominativ, string[] genitiv, string[] dativ, string[] akuzativ, string[] vokativ, string[] lokal, string[] instrumental)
         {
+            
             Nominativ = nominativ;
             Genitiv = genitiv;
             Dativ = dativ;
@@ -13,13 +17,18 @@
             Instrumental = instrumental;
         }
 
-        public string Nominativ { get; }
-        public string Genitiv { get; }
-        public string Dativ { get; }
-        public string Akuzativ { get; }
-        public string Vokativ { get; }
-        public string Lokal { get; }
-        public string Instrumental { get; }
+        public WordCases(string nominativ, string genitiv, string dativ, string akuzativ, string vokativ, string lokal, string instrumental) : this(
+            new []{nominativ}, new []{genitiv}, new []{dativ}, new []{akuzativ}, new []{vokativ}, new []{lokal}, new []{instrumental})
+        {
+        }
+
+        public string[] Nominativ { get; }
+        public string[] Genitiv { get; }
+        public string[] Dativ { get; }
+        public string[] Akuzativ { get; }
+        public string[] Vokativ { get; }
+        public string[] Lokal { get; }
+        public string[] Instrumental { get; }
     }
 
     public class WordAllCases

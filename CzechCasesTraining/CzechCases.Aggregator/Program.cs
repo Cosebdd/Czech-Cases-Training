@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using CzechCases.Wiktionary;
 
@@ -10,15 +11,20 @@ namespace CzechCases.Aggregator
         {
             StringBuilder strBuilder = new StringBuilder();
             JsonBatchAllNouns batcher = new JsonBatchAllNouns(500);
-            foreach (var bathce in batcher.GetBathces())
+            using (WordQuerier querier = new WordQuerier())
             {
-                foreach (var s in bathce)
+                foreach (var bathce in batcher.GetBathces())
                 {
-                    if (s.Length < 3 || char.IsUpper(s[0]))
-                        continue;
-                    strBuilder.AppendLine(s);
+                    foreach (var s in bathce)
+                    {
+                        if (s.Length < 3 || char.IsUpper(s[0]) || !querier.TryQueryWord(s, out var _))
+                            continue;
+                        Console.WriteLine(s);
+                        strBuilder.AppendLine(s);
+                    }
                 }
             }
+
             File.WriteAllText(@".\CzechAllWords.txt", strBuilder.ToString(), Encoding.Unicode);
         }
     }

@@ -2,6 +2,7 @@
 {
     public enum GrammaticalGender
     {
+        Unknown,
         MaleInanimate,
         MaleAnimate,
         Female,
