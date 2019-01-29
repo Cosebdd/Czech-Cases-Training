@@ -1,13 +1,13 @@
 ﻿using CzechCases.Model;
 using CzechCases.Wiktionary.Parsing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CzechCases.UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class WikiContentParserTests
     {
-        [TestMethod]
+        [Test]
         public void TestProperPageParsing()
         {
             var singleCases = new WordCases("burgán", "burgánu", "burgánu", "burgán", "burgáne", "burgánu", "burgánem");
@@ -21,7 +21,7 @@ namespace CzechCases.UnitTests
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestUnproperPageParsing()
         {
             var pageIsParsed = WikiContentParser.TryParseWikiContent(Articles.BadArticle, out var word);
@@ -29,7 +29,7 @@ namespace CzechCases.UnitTests
             Assert.IsNull(word);
         }
 
-        [TestMethod]
+        [Test]
         public void TestMultipleLanguagesPageParsing()
         {
             var singleCases = new WordCases(new[] { "pes" }, new[] { "psa" }, new[] { "psovi", "psu"}, new [] {"psa"}, new [] {"pse"}, new [] {"psovi","psu" }, new[] { "psem" });

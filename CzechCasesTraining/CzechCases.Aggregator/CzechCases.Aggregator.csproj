@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CzechCases.Model\CzechCases.Model.csproj">
-      <Project>{b17fa6fe-eae4-475a-a103-ce36d3be10ea}</Project>
+      <Project>{7915811c-eec8-40fa-9daa-0e533aac949e}</Project>
       <Name>CzechCases.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\CzechCases.Wiktionary\CzechCases.Wiktionary.csproj">
-      <Project>{cba84eca-51b3-48b1-bb58-37d90a368b20}</Project>
+      <Project>{48825cbe-6648-4822-8e0d-90bd86793a1f}</Project>
       <Name>CzechCases.Wiktionary</Name>
     </ProjectReference>
   </ItemGroup>

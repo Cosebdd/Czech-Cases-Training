@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechCases.Model", "CzechCases.Model\CzechCases.Model.csproj", "{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechCases.Wiktionary", "CzechCases.Wiktionary\CzechCases.Wiktionary.csproj", "{CBA84ECA-51B3-48B1-BB58-37D90A368B20}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechCases.Aggregator", "CzechCases.Aggregator\CzechCases.Aggregator.csproj", "{A263B38A-E9A2-4015-AC90-1A05BAE35CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechCases.UnitTests", "CzechCases.UnitTests\CzechCases.UnitTests.csproj", "{4C5B1B41-A446-4D99-B347-1CFAB50425AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzechCases.Model", "CzechCases.Model\CzechCases.Model.csproj", "{7915811C-EEC8-40FA-9DAA-0E533AAC949E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzechCases.UnitTests", "CzechCases.UnitTests\CzechCases.UnitTests.csproj", "{A7567690-C7F2-416E-9365-9B051D7B2DBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzechCases.Wiktionary", "CzechCases.Wiktionary\CzechCases.Wiktionary.csproj", "{48825CBE-6648-4822-8E0D-90BD86793A1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B17FA6FE-EAE4-475A-A103-CE36D3BE10EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBA84ECA-51B3-48B1-BB58-37D90A368B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBA84ECA-51B3-48B1-BB58-37D90A368B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBA84ECA-51B3-48B1-BB58-37D90A368B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBA84ECA-51B3-48B1-BB58-37D90A368B20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A263B38A-E9A2-4015-AC90-1A05BAE35CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A263B38A-E9A2-4015-AC90-1A05BAE35CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A263B38A-E9A2-4015-AC90-1A05BAE35CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A263B38A-E9A2-4015-AC90-1A05BAE35CEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C5B1B41-A446-4D99-B347-1CFAB50425AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C5B1B41-A446-4D99-B347-1CFAB50425AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C5B1B41-A446-4D99-B347-1CFAB50425AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C5B1B41-A446-4D99-B347-1CFAB50425AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7915811C-EEC8-40FA-9DAA-0E533AAC949E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7915811C-EEC8-40FA-9DAA-0E533AAC949E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7915811C-EEC8-40FA-9DAA-0E533AAC949E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7915811C-EEC8-40FA-9DAA-0E533AAC949E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7567690-C7F2-416E-9365-9B051D7B2DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7567690-C7F2-416E-9365-9B051D7B2DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7567690-C7F2-416E-9365-9B051D7B2DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7567690-C7F2-416E-9365-9B051D7B2DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48825CBE-6648-4822-8E0D-90BD86793A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48825CBE-6648-4822-8E0D-90BD86793A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48825CBE-6648-4822-8E0D-90BD86793A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48825CBE-6648-4822-8E0D-90BD86793A1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

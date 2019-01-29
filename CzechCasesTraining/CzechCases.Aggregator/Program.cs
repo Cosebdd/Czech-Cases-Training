@@ -17,7 +17,8 @@ namespace CzechCases.Aggregator
                 {
                     foreach (var s in bathce)
                     {
-                        if (s.Length < 3 || char.IsUpper(s[0]) || !querier.TryQueryWord(s, out var _))
+                        var wordIsExtracted = querier.TryQueryWord(s, out var word);
+                        if (s.Length < 3 || char.IsUpper(s[0]) || !wordIsExtracted)
                             continue;
                         Console.WriteLine(s);
                         strBuilder.AppendLine(s);
