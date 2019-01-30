@@ -1,20 +1,21 @@
 ﻿using System.Threading.Tasks;
+using CzechCases.Database;
 using CzechCases.Database.Model;
 using CzechCases.Database.Repositories;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
 
 namespace CzechCases.REST.Services
 {
     public class WordService
     {
         private readonly WordRepository _wordsRepository;
+        private const string DefaultDbConnection = "CzechCasesDb";
 
         public WordService(IConfiguration config)
         {
-            var client = new MongoClient(config.GetConnectionString("CzechCasesDb"));
-            var database = client.GetDatabase("CzechCasesDb");
-            _wordsRepository = new WordRepository(database);
+            var dbCon = DatabaseConnection.CreateConnection(config.GetConnectionString(DefaultDbConnection), DefaultDbConnection);
+
+            _wordsRepository = new WordRepository(dbCon);
         }
 
         public async Task<Word> Get(string word)

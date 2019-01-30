@@ -1,18 +1,21 @@
 ﻿using System.Threading.Tasks;
+using CzechCases.Database;
 using CzechCases.Database.Model;
 using CzechCases.Database.Repositories;
-using MongoDB.Driver;
 
 namespace CzechCases.Aggregator
 {
     public class WordPutter
     {
+        private const string DbName = "CzechCasesDb";
+        private const string Server = "localhost";
+        private const int Port = 27017;
+
         private readonly WordRepository _wordsRepository;
 
         public WordPutter()
         {
-            var client = new MongoClient(new MongoClientSettings() {ApplicationName = "CzechCasesDb", Server = new MongoServerAddress("localhost", 27017) });
-            var database = client.GetDatabase("CzechCasesDb");
+            var database = DatabaseConnection.CreateConnection(DbName, Server, Port);
             _wordsRepository = new WordRepository(database);
         }
 

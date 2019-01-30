@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using CzechCases.Database.Model;
-using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
@@ -11,7 +10,7 @@ namespace CzechCases.Database.Repositories
     {
         private readonly IMongoCollection<Word> _words;
 
-        public WordRepository(IMongoDatabase database)
+        public WordRepository(DatabaseConnection database)
         {
             _words = database.GetCollection<Word>("CzechCases");
         }
