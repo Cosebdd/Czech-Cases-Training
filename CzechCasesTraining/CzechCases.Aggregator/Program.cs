@@ -11,22 +11,21 @@ namespace CzechCases.Aggregator
         {
             StringBuilder strBuilder = new StringBuilder();
             JsonBatchAllNouns batcher = new JsonBatchAllNouns(500);
+            WordPutter putter = new WordPutter();
             using (WordQuerier querier = new WordQuerier())
             {
-                foreach (var bathce in batcher.GetBathces())
+                foreach (var batch in batcher.GetBathces())
                 {
-                    foreach (var s in bathce)
+                    foreach (var s in batch)
                     {
                         var wordIsExtracted = querier.TryQueryWord(s, out var word);
                         if (s.Length < 3 || char.IsUpper(s[0]) || !wordIsExtracted)
                             continue;
-                        Console.WriteLine(s);
-                        strBuilder.AppendLine(s);
+                        var puttedWord = putter.Create(WordConverter.ConvertWord(word)).Result;
+                        Console.WriteLine(puttedWord.WordCases.Singular.Nominativ[0]);
                     }
                 }
             }
-
-            File.WriteAllText(@".\CzechAllWords.txt", strBuilder.ToString(), Encoding.Unicode);
         }
     }
 }
