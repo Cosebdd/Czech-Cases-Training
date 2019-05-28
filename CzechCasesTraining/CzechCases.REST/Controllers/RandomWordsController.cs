@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CzechCases.Database.Model;
 using CzechCases.REST.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -12,19 +9,20 @@ namespace CzechCases.REST.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WordController : ControllerBase
+    public class RandomWordsController : ControllerBase
     {
+
         private readonly WordService _wordService;
 
-        public WordController(WordService wordService)
+        public RandomWordsController(WordService wordService)
         {
             _wordService = wordService;
         }
 
-        [HttpGet("{quantity}")]
-        public Word[] Get(int quantity)
+        [HttpGet]
+        public async Task<Word[]> Get([FromQuery]int? limit)
         {
-            return _wordService.GetRandom(quantity);
+            return await _wordService.GetRandom(limit ?? CommonConstants.DefaultLimit);
         }
     }
 }

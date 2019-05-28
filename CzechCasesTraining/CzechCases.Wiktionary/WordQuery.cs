@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using CzechCases.Model;
 using CzechCases.Wiktionary.Parsing;
 using Newtonsoft.Json.Linq;
@@ -16,17 +17,14 @@ namespace CzechCases.Wiktionary
             _client = new WebClient();
         }
 
-        public bool TryQueryWord(string word, out Word parsedWord)
+        public async Task<Word> QueryWordAsync(string word)
         {
-            parsedWord = null;
-
             var query = BuildQuery(word);
-
-            var pageContentJson = _client.DownloadString(query.ToString());
+            var pageContentJson = await _client.DownloadStringTaskAsync(query.ToString());
 
             var pageContent = GetPageContent(pageContentJson);
-
-            return WikiContentParser.TryParseWikiContent(pageContent, out parsedWord);
+            Console.WriteLine($"Parsing {word}");
+            return await WikiContentParser.ParseWikiContentAsync(pageContent);
         }
 
         private WiktionaryQueryBuilder BuildQuery(string word)

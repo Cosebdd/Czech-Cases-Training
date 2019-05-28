@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using CzechCases.Model;
 
 namespace CzechCases.Wiktionary.Parsing
@@ -10,21 +11,22 @@ namespace CzechCases.Wiktionary.Parsing
         private const string CasesPartRegExp = @"==== skloňování ====[\s\S]+?\n=|$";
         private const string GenderPartRegExp = @"=== podstatné jméno ===[\s\S]+?\n=|$";
 
-        public static bool TryParseWikiContent(string pageConent, out Word word)
+        public static async Task<Word> ParseWikiContentAsync(string pageConent)
         {
-            pageConent = pageConent.Replace("[", "").Replace("]", "").Replace("{", "").Replace("}", "");
-            pageConent = Regex.Replace(pageConent, @"\(.+?\)", "");
-            pageConent = Regex.Replace(pageConent, @"[ ]{2,}", " ");
-            word = null;
-            if (!TryGetCzechPart(pageConent, out var czechPart) 
-                || !TryGetGenderPart(czechPart, out var genderPart) 
-                || !TryGetCasesPart(czechPart, out var casesPart) 
-                || !GrammaticalGenderParser.TryParseGrammaticalGender(genderPart, out var gender) 
-                || !WordCasesParser.TryParseWordCases(casesPart, out var cases))
-                return false;
+            return await Task.Run(() =>
+            {
+                pageConent = pageConent.Replace("[", "").Replace("]", "").Replace("{", "").Replace("}", "");
+                pageConent = Regex.Replace(pageConent, @"\(.+?\)", "");
+                pageConent = Regex.Replace(pageConent, @"[ ]{2,}", " ");
+                if (!TryGetCzechPart(pageConent, out var czechPart)
+                    || !TryGetGenderPart(czechPart, out var genderPart)
+                    || !TryGetCasesPart(czechPart, out var casesPart)
+                    || !GrammaticalGenderParser.TryParseGrammaticalGender(genderPart, out var gender)
+                    || !WordCasesParser.TryParseWordCases(casesPart, out var cases))
+                    return null;
 
-            word = new Word(cases, gender);
-            return true;
+                return new Word(cases, gender);
+            });
         }
 
         private static bool TryGetCzechPart(string pageContent, out string czechPart)

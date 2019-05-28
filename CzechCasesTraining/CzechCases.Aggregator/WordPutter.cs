@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CzechCases.Database;
 using CzechCases.Database.Model;
 using CzechCases.Database.Repositories;
@@ -21,7 +22,8 @@ namespace CzechCases.Aggregator
 
         public async Task<Word> Create(Word word)
         {
-            return await _wordsRepository.Create(word);
+            Console.WriteLine(word.WordCases.Singular.Nominativ[0]);
+            return await _wordsRepository.CreateAsync(word);
         }
     }
 }

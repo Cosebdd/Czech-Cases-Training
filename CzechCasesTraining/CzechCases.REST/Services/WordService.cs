@@ -18,14 +18,24 @@ namespace CzechCases.REST.Services
             _wordsRepository = new WordRepository(dbCon);
         }
 
-        public async Task<Word> Get(string word)
+        public async Task<Word> GetByWord(string word)
         {
-            return await _wordsRepository.Get(word);
+            return await _wordsRepository.GetAsync(word);
         }
 
-        public Word[] GetRandom(int quantity)
+        public async Task<Word> Get(string id)
         {
-            return _wordsRepository.GetRandom(quantity);
+            return await _wordsRepository.GetAsync(id);
+        }
+
+        public async Task<Word[]> GetPage(int page, int limit)
+        {
+            return await _wordsRepository.GetPage(page, limit);
+        }
+
+        public async Task<Word[]> GetRandom(int limit)
+        {
+            return await _wordsRepository.GetRandom(limit);
         }
     }
 }
